@@ -1,123 +1,106 @@
 var express = require('express');
-var bodyParser = require('body-parser')
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var config = require('./config.js');
 var nforce = require('nforce');
-var hbs = require('hbs');
-var org;
 
+var routes = require('./routes/index');
 
 var app = express();
-// parse json data from post
-app.use(bodyParser.json());
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+// get a reference to the socket once a client connects
+var socket = io.sockets.on('connection', function(socket) {});
 
+var org = nforce.createConnection({
+    clientId: config.CLIENT_ID,
+    clientSecret: config.CLIENT_SECRET,
+    redirectUri: config.CALLBACK_URL + '/oauth/_callback',
+    mode: 'single',
+    environment: config.ENVIRONMENT // optional, sandbox or production, production default
+});
+
+org.authenticate({ username: config.USERNAME, password: config.PASSWORD }, function(err, oauth) {
+
+    if (err) return console.log(err);
+    if (!err) {
+        console.log('*** Successfully connected to Salesforce ***');
+        // add any logic to perform after login
+    }
+
+    var cj = org.createStreamClient();
+    var str = cj.subscribe({ topic: config.TOPIC, isPlatformEvent: true, oauth: oauth });
+
+    str.on('connect', function() {
+        console.log('Connected to topic: ' + config.TOPIC);
+    });
+
+    str.on('error', function(error) {
+        console.log('Error received from topic: ' + error);
+    });
+
+    str.on('data', function(data) {
+        console.log('Received the following from topic ---');
+        console.log(data);
+        // emit the record to be displayed on the page
+        socket.emit('event-processed', JSON.stringify(data));
+    });
+
+});
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.enable('trust proxy');
-// make express look in the public directory for assets (css/js/img)
-app.use(express.static(__dirname + '/public'));
 
-
-function isSetup() {
-    return (process.env.CONSUMER_KEY != null) && (process.env.CONSUMER_SECRET != null);
-}
-
-function oauthCallbackUrl(req) {
-    return req.protocol + '://' + req.get('host');
-}
-
-hbs.registerHelper('get', function(field) {
-    return this.get(field);
+app.use(function(req, res, next) {
+    res.io = io;
+    next();
 });
 
-app.get('/', function(req, res) {
-    if (isSetup()) {
-        org = nforce.createConnection({
-            clientId: process.env.CONSUMER_KEY,
-            clientSecret: process.env.CONSUMER_SECRET,
-            redirectUri: 'https://localhost:5001/callback',
-            mode: 'single',
-            apiVersion: 'v40.0'
+// uncomment after placing your favicon in /public
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
         });
-        console.log('------------');
-        console.log(req.query.code);
-        if (req.query.code !== undefined) {
-            // authenticated
-            org.authenticate(req.query, function(err) {
-                if (!err) {
-                    org.query({ query: 'SELECT id, name FROM Account' }, function(err, results) {
-                        if (!err) {
-                            //res.render('index', {records: results.records});
-                            res.render('layout3');
-                        } else {
-                            res.send(err.message);
-                        }
-                    });
-                } else {
-                    if (err.message.indexOf('invalid_grant') >= 0) {
-                        res.redirect('/');
-                    } else {
-                        res.send(err.message);
-                    }
-                }
-            });
-        } else {
-            res.redirect(org.getAuthUri());
-        }
-    } else {
-        res.redirect('/setup');
-    }
-});
+    });
+}
 
-
-app.post('/simulation', function(req, res) {
-    console.log('In simulation function ....' + req);
-    console.log('JSON structure:');
-    console.log(req.body);
-
-    /* sample event weather event .....
-      {
-    "DeviceID__c":"1234",
-    "door__c":"trasmediterranea",
-    "humidity__c":"12",
-    "key__c":"trasmediterranea",
-    "temperature__c":"32.445",
-    "ts__c":"trasmediterranea"
-    }
-    */
-    // insert json inside req.body to event 'trans__e' or AIS_Event__e
-    var evt = nforce.createSObject('AIS_Event__e', req.body);
-    org.insert({ sobject: evt }, function(err, resp) {
-        if (!err) {
-            res.json({ success: "Event sent successfully", status: 200 });
-        } else {
-            res.send(err.message);
-        }
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
     });
 });
 
 
-app.post('/LEDon', function(req, res) {
-    console.log('LEDon button pressed!');
-    // Run your LED toggling code here
-});
-
-app.post('/LEDoff', function(req, res) {
-    console.log('LEDoff button pressed!');
-    // Run your LED toggling code here
-});
-
-app.get('/setup', function(req, res) {
-    console.log('In setup ........isSetup()=' + isSetup());
-    if (isSetup()) {
-        res.redirect('/');
-    } else {
-        var isLocal = (req.hostname.indexOf('localhost') == 0);
-        var herokuApp = null;
-        if (req.hostname.indexOf('.herokuapp.com') > 0) {
-            herokuApp = req.hostname.replace(".herokuapp.com", "");
-        }
-        console.log('Render SETUP .......');
-        res.render('setup', { isLocal: isLocal, oauthCallbackUrl: oauthCallbackUrl(req), herokuApp: herokuApp });
-    }
-});
-
-app.listen(process.env.PORT || 5000);
+module.exports = { app: app, server: server, org: org };
+exports.org = org;

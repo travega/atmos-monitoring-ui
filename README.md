@@ -1,20 +1,30 @@
-Quick Force Node
-----------------
+platform-event-socketio
+=======================
 
-The quickest and easiest way to start a Node web app that uses the Force.com REST APIs.
+Node demo that streams Platform Events from Salesforce.com to the browser using socket.io. You can run the demo by opening:
 
-This application has everything you need to start building web apps that use the Force.com REST APIs.  How it works:
-* Instant deployment on the cloud with Heroku
-* Everything for local development including: Node & the Atom code editor
-* Super easy deployment of changes using Atom (no git or command lines necessary)
+[platform-event-socketio demo](http://platform-event-socketio.herokuapp.com/) - New Platform Events are streamed to this app and display in the browser using socket.io.
 
-Go for it:
+### Setup Remote Access in Salesforce.com
 
-1. [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-2. View the newly deployed application and follow the instructions to setup an OAuth Connected App in Salesforce and then set the config in your Heroku app
-3. Setup a local development environment by downloading your app's source: https://download-heroku-source.herokuapp.com/
-4. Unzip the archive and launch `gulp` - this will launch Atom and the Node server
-5. Check out the local app at: [http://localhost:5000](http://localhost:5000)
-6. Again follow the instructions in your local app to setup another OAuth Connected App for local development
-7. Make and test some local changes to the app
-8. Deploy those changes from Atom using the Heroku menu (Login, then Deploy)
+Setup a new Remote Access to get your OAuth tokens. If you are unfamiliar with settng this up, see 4:45 of Jeff Douglas' [Salesforce.com Primer for New Developers](http://www.youtube.com/watch?v=fq2ju2ML9GM). For your callback, simply use: http://localhost:3001/oauth/_callback
+
+### Create a Platform Event Definition in Salesforce.com
+
+Create a new Platform Event from the Setup Menu of your Salesforce Instance. 
+
+### Running the Application Locally
+
+```
+git clone https://github.com/jthurst/platform-event-socketio.git
+cd platform-event-socketio
+npm install
+```
+
+This will clone this repo locally so you simply have to make your config changes and be up and running. Now replace your OAuth tokens and credentials in the config.js file then run the following to start the server:
+
+```
+node app.js
+```
+
+Open your browser to  [http://localhost:3001](http://localhost:3001) and creat a Platform Event Salesforce and see it appear on the page.
