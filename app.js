@@ -89,9 +89,7 @@ app.post('/simulation', function(req, res) {
     org.insert({ sobject: evt }, function(err, resp) {
         if (!err) {
             res.json({ success: "Event sent successfully", status: 200 });
-        }
-        git
-        else {
+        } else {
             res.send(err.message);
         }
     });
