@@ -33,11 +33,10 @@ app.get('/', function(req, res) {
         org = nforce.createConnection({
             clientId: process.env.CONSUMER_KEY,
             clientSecret: process.env.CONSUMER_SECRET,
-            redirectUri: oauthCallbackUrl(req),
+            redirectUri: 'https://localhost:5001/callback',
             mode: 'single',
             apiVersion: 'v40.0'
         });
-
         console.log('------------');
         console.log(req.query.code);
         if (req.query.code !== undefined) {
