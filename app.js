@@ -43,7 +43,7 @@ org.authenticate({ username: config.USERNAME, password: config.PASSWORD }, funct
     });
 
     str.on('data', function(data) {
-        console.log('Received the following from topic ---');
+        console.log('App.js :: Received the following from topic ---');
         console.log(data);
         // emit the record to be displayed on the page
         socket.emit('event-processed', JSON.stringify(data));
