@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 router.post('/danger', function(req, res, next) {
     console.log('SKP:: In router post');
     console.log(JSON.stringify(req));
+    /*
     var evt = nforce.createSObject('Device_Component__e', req.body);
     org.insert({ sobject: evt }, function(err, resp) {
         if (!err) {
@@ -27,7 +28,7 @@ router.post('/danger', function(req, res, next) {
             console.log(err.message);
         }
     });
-
+    */
 });
 
 module.exports = router;
