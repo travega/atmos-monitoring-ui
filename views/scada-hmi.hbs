@@ -290,6 +290,7 @@
                                                </tr>
                                            </thead>
                                            <tbody id="messages">
+                                                <!--
                                                 <tr>
                                                     <th scope="row">327</th>
                                                     <td>Wonderwear Power Inverter</td>
@@ -298,7 +299,8 @@
                                                     <td>
                                                         <a href="https://smartexpo.lightning.force.com/sObject/5001r00001v1Yh4AAE/view">View Details</a>
                                                         </td>
-                                                </tr>                                              
+                                                </tr>
+                                                -->                                              
                                            </tbody>
                                         </table>
                                     </div>
@@ -353,7 +355,7 @@
                 console.log('SKP :: SORTED');	
                 var replayId = results['event']['replayId'];					  
 				console.log(replayId);
-                var caseId = results['payload']['case_Id__c'];
+                var caseId = results['payload']['case_id__c'];
                 console.log(caseId);
                 var serialNo = results['payload']['serial_number__c']
                 console.log(serialNo);
