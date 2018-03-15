@@ -14,7 +14,7 @@ $(document).ready(function() {
             hideMethod: 'fadeOut',
             timeOut: 5000
         };
-        toastr.success('Checkout settings menu on left!', 'Welcome to Modern!');
+        toastr.success('SCADA Salesforce', 'Welcome to Smart Factory Expo');
     }, 1800);
 
     var flot2 = function() {
