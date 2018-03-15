@@ -265,7 +265,7 @@
                                                 <input type="text" id="range_02">                                                
                                             </div>
                                             <div class="col-sm-12 text-center">
-                                                <button type="button" class="btn btn-danger btn-sm"><i class="fa"></i> Danger</button>
+                                                <button id="btnDanger" type="button" class="btn btn-danger btn-sm"><i class="fa"></i> Danger</button>
                                             </div>
                                         </div>
                                 </div>
@@ -312,7 +312,7 @@
                     </div>
                 </div><!-- Main Wrapper -->
                 <div class="page-footer">
-                    <p class="no-s">2018 &copy; SCADA by Salesforce.</p>
+                    <p class="no-s">2018 &copy; SCADA by Heroku.</p>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
@@ -373,6 +373,19 @@
 				//$(newPlatformEvent).prependTo('#messages').hide().slideDown();
 					  
 			});
+
+            $(document).ready(function() {
+                alert('HERE');
+
+                $("btnDanger").onclick(function(){
+
+                        alert('Button Pressed');
+                });
+            });
+
+
+
+
         </script>    
         
     </body>
