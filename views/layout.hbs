@@ -10,7 +10,9 @@
 			var socket = io();
 			socket.on('event-processed', function (data) {
 				var results = JSON.parse(data);
-				console.log(results);							  
+				console.log(results);
+				alert(results);
+				console.log('BIZARRE!!!');							  
 				
 				var newPlatformEvent = '<div class="slds-tile slds-media slds-box">' +
 					'	<div class="slds-media__figure">' +
