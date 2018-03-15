@@ -289,8 +289,8 @@
                                                    <th>Url</th>
                                                </tr>
                                            </thead>
-                                           <tbody>
-                                                <tr id="messages">
+                                           <tbody id="messages">
+                                                <tr>
                                                     <th scope="row">327</th>
                                                     <td>Wonderwear Power Inverter</td>
                                                     <td><span class="label label-primary">In Progress</span></td>
@@ -376,7 +376,7 @@
                                        '         <a href="https://smartexpo.lightning.force.com/sObject/' + caseId + '/view>View Details</a>' +
                                        '     </td> ' +
                                        ' </tr> ';
-				alert(newPlatformEvent);
+	
                 $(newPlatformEvent).appendTo('#messages').hide().slideDown();
 					  
 			});
