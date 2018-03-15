@@ -282,14 +282,14 @@
                                            <thead>
                                                <tr>
                                                    <th>#</th>
-                                                   <th>Project</th>
+                                                   <th>Salesforce Case ID</th>
                                                    <th>Status</th>
-                                                   <th>Manager</th>
-                                                   <th>Progress</th>
+                                                   <th>SLA</th>
+                                                   <th>Url</th>
                                                </tr>
                                            </thead>
                                            <tbody>
-                                               
+                                               <div id="sfTable">
                                                <tr>
                                                    <th scope="row">327</th>
                                                    <td>Wonderwear Power Inverter</td>
@@ -302,7 +302,7 @@
                                                        </div>
                                                    </td>
                                                </tr>
-                                               
+                                               </div>
                                            </tbody>
                                         </table>
                                     </div>
@@ -354,10 +354,24 @@
 			socket.on('event-processed', function (data) {
 				var results = JSON.parse(data);
 				console.log(results);	
-                console.log('SKP :: SORTED');						  
-				console.log(results['event']['replayId']);
+                console.log('SKP :: SORTED');	
+                var replayId = results['event']['replayId'];					  
+				console.log(replayId);
+                var caseId = results['payload']['case_Id__c'];
+                console.log(caseId);
+                var serialNo = results['payload']['serial_number__c']
+                console.log(serialNo);
+                var subject = results['payload']['case_subject__c']
+                console.log(subject);
+                var status = results['payload']['case_status__c']
+                console.log(status);
+                var sla = results['payload']['sla__c']
+                console.log(sla);
+                var url = 'https://smartexpo.lightning.force.com/' + caseId;
+                console.log(url);
                 
-                
+                var newPlatformEvent = '<div class="slds-tile slds-media slds-box">' +
+					'	<div class="slds-media__figure">' +
 				
 				//$(newPlatformEvent).prependTo('#messages').hide().slideDown();
 					  
