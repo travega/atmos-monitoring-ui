@@ -242,8 +242,9 @@ $(document).ready(function() {
         console.log('eventInfo = ' + eventInfo);
         //convert the object to a JSON string (serialize json)
         var eventInfoJson = JSON.stringify(eventInfo);
-        console.log(eventInfoJson);
+        console.log('SKP :: EventInfoJSON ::', eventInfoJson);
 
+        /*
         $.ajax({
             type: 'POST',
             data: eventInfo,
@@ -256,7 +257,7 @@ $(document).ready(function() {
                 console.log('failure');
             }
         });
-
+        */
     });
 
 
