@@ -472,7 +472,8 @@
 			var socket = io();
 			socket.on('event-processed', function (data) {
 				var results = JSON.parse(data);
-				console.log(results);							  
+				console.log(results);	
+                console.log('SKP :: SORTED');						  
 				alert(results);
 				
 				//$(newPlatformEvent).prependTo('#messages').hide().slideDown();
