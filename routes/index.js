@@ -26,9 +26,9 @@ router.post('/danger', function(req, res, next) {
     newEvent.set('voltage__c', req.body.voltage__c);
     newEvent.set('humidity__c', req.body.humidity__c);
     newEvent.set('error_description__c', req.body.error_description__c);
-    org.org.insert({ sobject: newEvent });
-    /*
-    org.insert({ sobject: newEvent }, function(err, resp) {
+    //org.org.insert({ sobject: newEvent });
+
+    org.org.insert({ sobject: newEvent }, function(err, resp) {
         if (!err) {
             console.log('SUCCESS');
         } else {
@@ -36,7 +36,7 @@ router.post('/danger', function(req, res, next) {
             console.log(err.message);
         }
     });
-    */
+
 
 
 
