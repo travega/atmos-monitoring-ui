@@ -23,9 +23,11 @@ router.post('/danger', function(req, res, next) {
     newEvent.set('serial_number__c', req.body.serial_number__c);
     newEvent.set('error_code__c', req.body.error_code__c);
     newEvent.set('temperature__c', req.body.temperature__c);
-    newEvent.set('voltage__c', req.body.voltage);
-
-
+    newEvent.set('voltage__c', req.body.voltage__c);
+    newEvent.set('humidity__c', req.body.humidity__c);
+    newEvent.set('error_description__c', req.body.error_description__c);
+    org.org.insert({ sobject: newEvent });
+    /*
     org.insert({ sobject: newEvent }, function(err, resp) {
         if (!err) {
             console.log('SUCCESS');
@@ -34,6 +36,7 @@ router.post('/danger', function(req, res, next) {
             console.log(err.message);
         }
     });
+    */
 
 
 
