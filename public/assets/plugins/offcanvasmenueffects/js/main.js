@@ -9,42 +9,45 @@
  * http://www.codrops.com
  */
 (function() {
+    /*
 
-	var bodyEl = document.body,
-		overlay = document.querySelector( '.overlay' ),
-		openbtn = document.getElementById( 'profile-menu-link' ),
-		closebtn = document.getElementById( 'close-button' ),
-		isOpen = false;
 
-	function init() {
-		initEvents();
-	}
+            var bodyEl = document.body,
+                overlay = document.querySelector('.overlay'),
+                openbtn = document.getElementById('profile-menu-link'),
+                closebtn = document.getElementById('close-button'),
+                isOpen = false;
 
-	function initEvents() {
-		openbtn.addEventListener( 'click', toggleMenu );
-		if( closebtn ) {
-			closebtn.addEventListener( 'click', toggleMenu );
-		}
+            function init() {
+                initEvents();
+            }
 
-		// close the menu element if the target it´s not the menu element or one of its descendants..
-		overlay.addEventListener( 'click', function(ev) {
-			var target = ev.target;
-			if( isOpen && target !== openbtn ) {
-				toggleMenu();
-			}
-		} );
-	}
+            function initEvents() {
+                openbtn.addEventListener('click', toggleMenu);
+                if (closebtn) {
+                    closebtn.addEventListener('click', toggleMenu);
+                }
 
-	function toggleMenu() {
-		if( isOpen ) {
-			classie.remove( bodyEl, 'show-menu' );
-		}
-		else {
-			classie.add( bodyEl, 'show-menu' );
-		}
-		isOpen = !isOpen;
-	}
+                // close the menu element if the target it´s not the menu element or one of its descendants..
+                overlay.addEventListener('click', function(ev) {
+                    var target = ev.target;
+                    if (isOpen && target !== openbtn) {
+                        toggleMenu();
+                    }
+                });
+            }
 
-	init();
+            function toggleMenu() {
+                if (isOpen) {
+                    classie.remove(bodyEl, 'show-menu');
+                } else {
+                    classie.add(bodyEl, 'show-menu');
+                }
+                isOpen = !isOpen;
+            }
+
+            init();
+
+*/
 
 })();
