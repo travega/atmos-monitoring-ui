@@ -7,7 +7,7 @@ const util = require('util');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('scada-hmi', { title: 'Salesforce Platform Events Interaction With Heroku...' });
+    res.render('scada-hmi', { title: 'Salesforce SCADA With Heroku...' });
 
 });
 
