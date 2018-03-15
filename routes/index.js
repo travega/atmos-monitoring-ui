@@ -22,10 +22,9 @@ router.post('/danger', function(req, res, next) {
     var evt = nforce.createSObject('Device_Component__e', req.body);
     org.insert({ sobject: evt }, function(err, resp) {
         if (!err) {
-            res.json({ success: "Event sent successfully", status: 200 });
             console.log('SUCCESS');
         } else {
-            res.send(err.message);
+
             console.log(err.message);
         }
     });
