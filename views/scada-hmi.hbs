@@ -32,7 +32,7 @@
         <!-- Theme Styles -->
         <link href="assets/stylesheets/modern.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/stylesheets/custom.css" rel="stylesheet" type="text/css"/>
-        
+          <script src="/socket.io/socket.io.js"></script>
         <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
         <script src="assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
         
@@ -465,8 +465,19 @@
         <script src="assets/plugins/ion.rangeslider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script > 
         <script src="assets/scripts/modern.min.js"></script>
         <script src="assets/scripts/pages/dashboard.js"></script>
-
+      
         <script src="assets/scripts/pages/ui-sliders.js"></script>
+
+        <script type="text/javascript">			
+			var socket = io();
+			socket.on('event-processed', function (data) {
+				var results = JSON.parse(data);
+				console.log(results);							  
+				alert(results);
+				
+				//$(newPlatformEvent).prependTo('#messages').hide().slideDown();
+					  
+			});
         
     </body>
 </html>

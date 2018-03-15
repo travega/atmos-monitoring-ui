@@ -14,7 +14,7 @@ $(document).ready(function() {
             hideMethod: 'fadeOut',
             timeOut: 5000
         };
-        toastr.success('SCADA Salesforce', 'Welcome to Smart Factory Expo');
+        toastr.success('', 'Welcome to Smart Factory Expo');
     }, 1800);
 
     var flot2 = function() {
@@ -23,7 +23,7 @@ $(document).ready(function() {
         // be fetched from a server
 
         var data = [],
-            totalPoints = 100;
+            totalPoints = 110;
 
         function getRandomData() {
 
