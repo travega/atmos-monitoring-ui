@@ -11,7 +11,9 @@ router.get('/', function(req, res, next) {
 
 });
 
+
 /* Creates a new the record */
+/*
 router.post('/', function(req, res, next) {
     console.log('SKP:: In router post');
     console.log(JSON.stringify(req));
@@ -24,5 +26,5 @@ router.post('/', function(req, res, next) {
     org.org.insert({ sobject: newEvent })
 
 });
-
+*/
 module.exports = router;
