@@ -365,7 +365,7 @@
                 console.log(status);
                 var sla = results['payload']['sla__c']
                 console.log(sla);
-                var url = 'https://smartexpo.lightning.force.com/' + caseId;
+                var url = 'https://smartexpo.lightning.force.com/' + caseId + '/view';
                 console.log(url);
                 
                 var newPlatformEvent = ' <tr>' +
@@ -375,7 +375,7 @@
                                        '     <td><span class="label label-primary">' + status + '</span></td>' +
                                        '     <td>' + sla + '</td>' +
                                        '     <td> ' +
-                                       '         <a href="https://smartexpo.lightning.force.com/sObject/' + caseId + '/view>View Details</a>' +
+                                       '         <a href=' + url +'>View Details</a>' +
                                        '     </td> ' +
                                        ' </tr> ';
 	
