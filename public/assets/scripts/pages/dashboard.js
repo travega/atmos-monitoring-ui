@@ -228,6 +228,6 @@ $(document).ready(function() {
     });
 
     //add a handler for the button click
-    console.log('SKP:: Serial Number' + $("#serialNo").text());
+    console.log('SKP:: Serial Number :: ' + $("#serialNo").text());
 
 });
