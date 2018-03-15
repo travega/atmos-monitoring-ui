@@ -246,7 +246,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            data: eventInfoJson,
+            data: eventInfo,
             contentType: 'application/json',
             url: '/danger',
             success: function(data) {
