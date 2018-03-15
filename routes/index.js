@@ -19,8 +19,14 @@ router.post('/danger', function(req, res, next) {
     console.log(req.body);
     console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
 
-    var evt = nforce.createSObject('Device_Component__e', req.body);
-    org.insert({ sobject: evt }, function(err, resp) {
+    var newEvent = nforce.createSObject('Device_Component__e');
+    newEvent.set('serial_number__c', req.body.serial_number__c);
+    newEvent.set('error_code__c', req.body.error_code__c);
+    newEvent.set('temperature__c', req.body.temperature__c);
+    newEvent.set('voltage__c', req.body.voltage);
+
+
+    org.insert({ sobject: newEvent }, function(err, resp) {
         if (!err) {
             console.log('SUCCESS');
         } else {
@@ -28,6 +34,8 @@ router.post('/danger', function(req, res, next) {
             console.log(err.message);
         }
     });
+
+
 
 });
 
