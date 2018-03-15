@@ -235,8 +235,9 @@ $(document).ready(function() {
             "serial_number__c": $("#serialNo").text(),
             "error_code__c": "ERR-255",
             "temperature__c": $('#range_02').val(),
-            "humidity__c": "23",
-            "error_message__c": "Heat sync problems in component. Error code ERR-255, ERR-455 and ERR-7967 being reported"
+            "humidity__c": 23,
+            "voltage__c": 433,
+            "error_description__c": "Heat sync problems in component. Error code ERR-255, ERR-455 and ERR-7967 being reported"
         };
 
         console.log('eventInfo = ' + eventInfo);
@@ -244,10 +245,10 @@ $(document).ready(function() {
         var eventInfoJson = JSON.stringify(eventInfo);
         console.log('SKP :: EventInfoJSON ::', eventInfoJson);
 
-        /*
+
         $.ajax({
             type: 'POST',
-            data: eventInfo,
+            data: eventInfoJson,
             contentType: 'application/json',
             url: '/danger',
             success: function(data) {
@@ -257,7 +258,7 @@ $(document).ready(function() {
                 console.log('failure');
             }
         });
-        */
+
     });
 
 
