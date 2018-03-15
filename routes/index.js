@@ -13,18 +13,21 @@ router.get('/', function(req, res, next) {
 
 
 /* Creates a new the record */
-/*
-router.post('/', function(req, res, next) {
+
+router.post('/danger', function(req, res, next) {
     console.log('SKP:: In router post');
     console.log(JSON.stringify(req));
-
-
-    newEvent.set('Product_Name__c', req.body.productName);
-    newEvent.set('Number_of_Units__c', req.body.numberOfUnits);
-    newEvent.set('Total_Amount__c', req.body.totalAmount);
-
-    org.org.insert({ sobject: newEvent })
+    var evt = nforce.createSObject('Device_Component__e', req.body);
+    org.insert({ sobject: evt }, function(err, resp) {
+        if (!err) {
+            res.json({ success: "Event sent successfully", status: 200 });
+            console.log('SUCCESS');
+        } else {
+            res.send(err.message);
+            console.log(err.message);
+        }
+    });
 
 });
-*/
+
 module.exports = router;

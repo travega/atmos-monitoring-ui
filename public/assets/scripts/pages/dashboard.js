@@ -227,8 +227,37 @@ $(document).ready(function() {
         from: 550
     });
 
-    //add a handler for the button click
+    //add a handler for the danger button click
     console.log('SKP:: Serial Number :: ' + $("#serialNo").text());
+    $("#btnDanger").click(function() {
+
+        var eventInfo = {
+            "serial_number__c": $("#serialNo").text(),
+            "error_code__c": "ERR-255",
+            "temperature__c": $('#range_02').val(),
+            "humidity__c": "23",
+            "error_message__c": "Heat sync problems in component. Error code ERR-255, ERR-455 and ERR-7967 being reported"
+        };
+
+        console.log('eventInfo = ' + eventInfo);
+        //convert the object to a JSON string (serialize json)
+        var eventInfoJson = JSON.stringify(eventInfo);
+        console.log(eventInfoJson);
+
+        $.ajax({
+            type: 'POST',
+            data: eventInfoJson,
+            contentType: 'application/json',
+            url: '/danger',
+            success: function(data) {
+                console.log('success');
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log('failure');
+            }
+        });
+
+    });
 
 
 });
