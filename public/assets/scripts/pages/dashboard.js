@@ -227,7 +227,7 @@ $(document).ready(function() {
         from: 550
     });
 
-
-
+    //add a handler for the button click
+    console.log$('SKP:: Serial Number' + $("#serialNo").value);
 
 });
