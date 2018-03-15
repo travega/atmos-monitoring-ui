@@ -3921,11 +3921,11 @@
                     -moz-transform: rsimple-line-icons.cssotate(-90deg);
                     -o-transform: rotate(-90deg);
                     -ms-transform: rotate(-90deg);
-                    transform: rotate(-90deg)
+                    transform: rotate(-90deg);
                 }
                 
                 .menu.accordion-menu li {
-                    list-style-type: none
+                    list-style-type: none;
                 }
                 
                 .menu.accordion-menu li a .badge {
@@ -4128,7 +4128,7 @@
                 
                 .small-sidebar:not(.page-sidebar-fixed) .menu.accordion-menu {
                     width: auto;
-                    oveflow: visible!important
+                    overflow: visible!important
                 }
                 
                 .small-sidebar:not(.page-sidebar-fixed) .accordion-menu,
@@ -4238,9 +4238,7 @@
                     position: relative
                 }
                 
-                .page-header-fixed:not(.page-sidebar-fixed):not(.page-horizontal-bar) .page-inner {
-                    /padding: 60px 0 50px
-                }
+                .page-header-fixed:not(.page-sidebar-fixed):not(.page-horizontal-bar) .page-inner {}
                 
                 .page-sidebar-fixed.page-header-fixed .page-inner {
                     padding: 60px 0 50px 160px
