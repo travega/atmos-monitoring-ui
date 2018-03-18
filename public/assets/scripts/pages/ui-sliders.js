@@ -3,8 +3,8 @@ $(document).ready(function() {
 
     $("#range_02").ionRangeSlider({
         min: 100,
-        max: 1000,
-        from: 550
+        max: 600,
+        from: 120
     });
 
 });
