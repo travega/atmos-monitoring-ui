@@ -367,19 +367,22 @@
                 console.log(sla);
                 var url = 'https://smartexpo.lightning.force.com/one/one.app#/sObject/' + caseId + '/view';
                 console.log(url);
-                
-                var newPlatformEvent = ' <tr>' +
-                                       '     <th scope="row">' + replayId + '</th>' +
-                                       '     <td>' + subject + '</td>' +
-                                       '     <td>' + caseId + '</td>' +
-                                       '     <td><span class="label label-primary">' + status + '</span></td>' +
-                                       '     <td>' + sla + '</td>' +
-                                       '     <td> ' +
-                                       '         <a href=' + url +'>View Details</a>' +
-                                       '     </td> ' +
-                                       ' </tr> ';
-	
-                $(newPlatformEvent).appendTo('#messages').hide().slideDown();
+
+                if(serialNo == 'SN34593048530'){
+                        console.log(serialNo);
+                        var newPlatformEvent = ' <tr>' +
+                                            '     <th scope="row">' + replayId + '</th>' +
+                                            '     <td>' + subject + '</td>' +
+                                            '     <td>' + caseId + '</td>' +
+                                            '     <td><span class="label label-primary">' + status + '</span></td>' +
+                                            '     <td>' + sla + '</td>' +
+                                            '     <td> ' +
+                                            '         <a href=' + url +'>View Details</a>' +
+                                            '     </td> ' +
+                                            ' </tr> ';
+            
+                        $(newPlatformEvent).appendTo('#messages').hide().slideDown();
+                }
 					  
 			});
 

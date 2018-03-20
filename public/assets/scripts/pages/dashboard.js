@@ -223,8 +223,8 @@ $(document).ready(function() {
     //hack 
     $("#range_02").ionRangeSlider({
         min: 100,
-        max: 1000,
-        from: 550
+        max: 500,
+        from: 170
     });
 
     //add a handler for the danger button click
