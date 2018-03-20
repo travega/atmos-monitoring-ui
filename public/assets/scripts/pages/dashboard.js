@@ -245,7 +245,6 @@ $(document).ready(function() {
         var eventInfoJson = JSON.stringify(eventInfo);
         console.log('SKP :: EventInfoJSON ::', eventInfoJson);
 
-
         $.ajax({
             type: 'POST',
             data: eventInfoJson,
