@@ -14,7 +14,7 @@ $(document).ready(function() {
             hideMethod: 'fadeOut',
             timeOut: 5000
         };
-        toastr.success('', 'Welcome to Smart Factory Expo');
+        toastr.success('', 'Welcome to Smart Industry Expo');
     }, 1800);
 
     var flot2 = function() {
