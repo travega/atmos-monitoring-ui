@@ -11,7 +11,10 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/smart-engine', function(req, res, next) {
+    res.render('engine-hmi', { title: 'Salesforce SCADA With Heroku...' });
 
+});
 /* Creates a new the record */
 
 router.post('/danger', function(req, res, next) {
