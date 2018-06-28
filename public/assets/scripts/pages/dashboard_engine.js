@@ -180,7 +180,7 @@ $(document).ready(function() {
             [7, "8"]
         ];
 
-        /*
+
         var plot1 = $.plot("#flotchart1", dataset, {
             series: {
                 color: "#14D1BD",
@@ -216,7 +216,6 @@ $(document).ready(function() {
             }
         });
 
-        */
 
     };
 
