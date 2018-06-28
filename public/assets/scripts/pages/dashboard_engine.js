@@ -14,7 +14,7 @@ $(document).ready(function() {
             hideMethod: 'fadeOut',
             timeOut: 5000
         };
-        toastr.success('', 'Welcome to Smart Industry Expo');
+        toastr.success('', 'Welcome to Farnborough Air Show');
     }, 1800);
 
     var flot2 = function() {
@@ -96,6 +96,8 @@ $(document).ready(function() {
     };
 
     flot2();
+
+
     var flot1 = function() {
         var data = [
             [0, 65],
@@ -178,7 +180,7 @@ $(document).ready(function() {
             [7, "8"]
         ];
 
-
+        /*
         var plot1 = $.plot("#flotchart1", dataset, {
             series: {
                 color: "#14D1BD",
@@ -213,6 +215,8 @@ $(document).ready(function() {
                 defaultTheme: false
             }
         });
+
+        */
 
     };
 
