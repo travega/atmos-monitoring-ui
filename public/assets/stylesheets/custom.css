@@ -1,6 +1,10 @@
 /* Write your custom CSS here */
 
-imgEngine img {
+.imgEngine {
     width: 50%;
     height: auto;
+}
+
+.imgBackground {
+    background-color: black;
 }
