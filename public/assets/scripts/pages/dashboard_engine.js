@@ -238,9 +238,9 @@ $(document).ready(function() {
         var eventInfo = {
             "serial_number__c": $("#serialNo").text(),
             "error_code__c": "ERR-255",
-            "temperature__c": $('#range_02').val(),
+            "vibration__c": $('#range_02').val(),
             "humidity__c": 23,
-            "voltage__c": 433,
+            "temperature__c": 235,
             "error_description__c": "Heat sync problems in component. Error code ERR-255, ERR-455 and ERR-7967 being reported"
         };
 
