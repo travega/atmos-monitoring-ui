@@ -22,11 +22,11 @@ router.post('/danger', function(req, res, next) {
     console.log(req.body);
     console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
 
-    var newEvent = nforce.createSObject('Device_Component__e');
+    var newEvent = nforce.createSObject('Engine_Component_Event__e');
     newEvent.set('serial_number__c', req.body.serial_number__c);
     newEvent.set('error_code__c', req.body.error_code__c);
     newEvent.set('temperature__c', req.body.temperature__c);
-    newEvent.set('voltage__c', req.body.voltage__c);
+    newEvent.set('vibration__c', req.body.vibration__c);
     newEvent.set('humidity__c', req.body.humidity__c);
     newEvent.set('error_description__c', req.body.error_description__c);
     //org.org.insert({ sobject: newEvent });
