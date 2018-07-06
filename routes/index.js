@@ -24,7 +24,7 @@ router.post('/danger', function(req, res, next) {
 
     var newEvent = nforce.createSObject('Engine_Component_Event__e');
     newEvent.set('serial_number__c', req.body.serial_number__c);
-    newEvent.set('error_code__c', req.body.error_code__c);
+    newEvent.set('errorcode__c', req.body.error_code__c);
     newEvent.set('temperature__c', req.body.temperature__c);
     newEvent.set('vibration__c', req.body.vibration__c);
     newEvent.set('humidity__c', req.body.humidity__c);
