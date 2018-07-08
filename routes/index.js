@@ -22,7 +22,7 @@ router.post('/temperature', function(req, res, next) {
             console.log(req.body);
             console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
 
-            var newEvent = nforce.createSObject('Engine_Component_Event__e');
+            var newEvent = nforce.createSObject('Device_Component__e');
             newEvent.set('serial_number__c', req.body.serial_number__c);
             newEvent.set('errorcode__c', req.body.error_code__c);
             newEvent.set('temperature__c', req.body.temperature__c);
