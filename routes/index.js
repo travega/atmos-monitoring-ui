@@ -15,6 +15,9 @@ router.get('/smart-engine', function(req, res, next) {
     res.render('engine-hmi', { title: 'Salesforce SCADA With Heroku...' });
 
 });
+
+
+
 /* Creates a new the record */
 
 router.post('/temperature', function(req, res, next) {
@@ -40,9 +43,16 @@ router.post('/temperature', function(req, res, next) {
         }
     });
 
+});
 
-
+router.get('/temperature', function(req, res, next) {
+    res.render('engine-hmi', { title: 'Test SCADA With Heroku...' });
 
 });
+
+
+
+
+
 
 module.exports = router;
