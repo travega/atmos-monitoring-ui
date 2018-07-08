@@ -253,7 +253,7 @@ $(document).ready(function() {
             type: 'POST',
             data: eventInfoJson,
             contentType: 'application/json',
-            url: '/danger',
+            url: '/vibration',
             success: function(data) {
                 console.log('success');
             },

@@ -17,32 +17,55 @@ router.get('/smart-engine', function(req, res, next) {
 });
 /* Creates a new the record */
 
-router.post('/danger', function(req, res, next) {
-    console.log('SKP:: In router post');
-    console.log(req.body);
-    console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
+router.post('/temperature', function(req, res, next) {
+            console.log('SKP:: In Smart Bakery Router post');
+            console.log(req.body);
+            console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
 
-    var newEvent = nforce.createSObject('Engine_Component_Event__e');
-    newEvent.set('serial_number__c', req.body.serial_number__c);
-    newEvent.set('errorcode__c', req.body.error_code__c);
-    newEvent.set('temperature__c', req.body.temperature__c);
-    newEvent.set('vibration__c', req.body.vibration__c);
-    newEvent.set('humidity__c', req.body.humidity__c);
-    newEvent.set('error_description__c', req.body.error_description__c);
-    //org.org.insert({ sobject: newEvent });
+            var newEvent = nforce.createSObject('Engine_Component_Event__e');
+            newEvent.set('serial_number__c', req.body.serial_number__c);
+            newEvent.set('errorcode__c', req.body.error_code__c);
+            newEvent.set('temperature__c', req.body.temperature__c);
+            newEvent.set('voltage__c', req.body.voltage__c);
+            newEvent.set('humidity__c', req.body.humidity__c);
+            newEvent.set('error_description__c', req.body.error_description__c);
+            //org.org.insert({ sobject: newEvent });
 
-    org.org.insert({ sobject: newEvent }, function(err, resp) {
-        if (!err) {
-            console.log('SUCCESS');
-        } else {
+            org.org.insert({ sobject: newEvent }, function(err, resp) {
+                if (!err) {
+                    console.log('SUCCESS');
+                } else {
 
-            console.log(err.message);
-        }
-    });
+                    console.log(err.message);
+                }
+            });
+
+            router.post('/vibration', function(req, res, next) {
+                console.log('SKP:: In Engine Router Post');
+                console.log(req.body);
+                console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
+
+                var newEvent = nforce.createSObject('Engine_Component_Event__e');
+                newEvent.set('serial_number__c', req.body.serial_number__c);
+                newEvent.set('errorcode__c', req.body.error_code__c);
+                newEvent.set('temperature__c', req.body.temperature__c);
+                newEvent.set('vibration__c', req.body.vibration__c);
+                newEvent.set('humidity__c', req.body.humidity__c);
+                newEvent.set('error_description__c', req.body.error_description__c);
+                //org.org.insert({ sobject: newEvent });
+
+                org.org.insert({ sobject: newEvent }, function(err, resp) {
+                    if (!err) {
+                        console.log('SUCCESS');
+                    } else {
+
+                        console.log(err.message);
+                    }
+                });
 
 
 
 
-});
+            });
 
-module.exports = router;
+            module.exports = router;
