@@ -45,10 +45,32 @@ router.post('/temperature', function(req, res, next) {
 
 });
 
-router.get('/temperature', function(req, res, next) {
-    res.render('engine-hmi', { title: 'Test SCADA With Heroku...' });
+
+router.post('/vibration', function(req, res, next) {
+    console.log('SKP:: In Smart Bakery Router post');
+    console.log(req.body);
+    console.log('SKP :: SerialNumber :: ' + req.body.serial_number__c);
+
+    var newEvent = nforce.createSObject('Engine_Component_Event__e');
+    newEvent.set('serial_number__c', req.body.serial_number__c);
+    newEvent.set('error_code__c', req.body.error_code__c);
+    newEvent.set('temperature__c', req.body.temperature__c);
+    newEvent.set('vibration__c', req.body.voltage__c);
+    newEvent.set('humidity__c', req.body.humidity__c);
+    newEvent.set('error_description__c', req.body.error_description__c);
+    //org.org.insert({ sobject: newEvent });
+
+    org.org.insert({ sobject: newEvent }, function(err, resp) {
+        if (!err) {
+            console.log('SUCCESS');
+        } else {
+
+            console.log(err.message);
+        }
+    });
 
 });
+
 
 
 
