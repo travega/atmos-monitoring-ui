@@ -241,7 +241,7 @@ $(document).ready(function() {
             "vibration__c": $('#range_02').val(),
             "humidity__c": 23,
             "temperature__c": 235,
-            "error_description__c": "Heat sync problems in component. Error code ERR-255, ERR-455 and ERR-7967 being reported"
+            "error_description__c": "HPC Drum issues identified from error codes reported from the component. Excessive vibrations indicating problems with inner seal."
         };
 
         console.log('eventInfo = ' + eventInfo);
